@@ -1,0 +1,395 @@
+@import "tailwindcss";
+
+/* ========================================
+   DESIGN TOKENS — Hardened Tiger
+   ======================================== */
+@theme {
+  /* Fonts */
+  --font-sans: "Camera Plain Variable", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Roboto Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-tech: "Roboto Mono Variable", monospace;
+
+  /* Breakpoints */
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+
+  /* Animations */
+  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-spin: spin 1s linear infinite;
+  --animate-marquee: marquee-scroll 40s linear infinite;
+  --animate-fc-drift-1: fc-drift-1 20s linear infinite;
+  --animate-fc-drift-2: fc-drift-2 24s linear infinite;
+  --animate-fc-drift-3: fc-drift-3 18s linear infinite;
+  --animate-fc-drift-4: fc-drift-4 22s linear infinite;
+  --animate-aurora: aurora-shift 15s ease-in-out infinite alternate;
+  --animate-glitch-1: glitch-clip-1 2s infinite linear alternate-reverse;
+  --animate-glitch-2: glitch-clip-2 3s infinite linear alternate-reverse;
+}
+
+/* ========================================
+   CSS CUSTOM PROPERTIES
+   ======================================== */
+:root {
+  /* Core palette — dark mode (default) */
+  --background: 30 20% 5%;
+  --foreground: 45 40% 95%;
+  --card: 30 15% 8%;
+  --card-foreground: 45 40% 95%;
+  --popover: 30 15% 8%;
+  --popover-foreground: 45 40% 95%;
+  --primary: 14 93% 45%;
+  --primary-foreground: 45 40% 98%;
+  --secondary: 30 10% 14%;
+  --secondary-foreground: 45 20% 80%;
+  --muted: 30 10% 14%;
+  --muted-foreground: 40 9% 55%;
+  --border: 30 10% 18%;
+  --input: 30 10% 18%;
+  --ring: 14 93% 45%;
+  --radius: 0.75rem;
+
+  /* Accent / Brand */
+  --accent: 30 10% 14%;
+  --accent-foreground: 14 93% 45%;
+  --accent-primary: 225 88% 53%;
+  --accent-primary-foreground: 208 100% 97%;
+
+  /* Brand palette */
+  --brand-tiger: 14 93% 45%;
+  --brand-tiger-foreground: 30 100% 85%;
+  --brand-sapphire: 217 75% 49%;
+  --brand-twilight: 251 60% 51%;
+  --brand-saffron: 20 94% 50%;
+
+  /* Semantic */
+  --destructive: 3 76% 60%;
+  --success: 142 72% 45%;
+  --warning: 25 98% 50%;
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   TYPOGRAPHY — Text Gradient
+   ======================================== */
+.text-gradient {
+  background: linear-gradient(135deg,
+    hsl(var(--accent-primary)),
+    hsl(var(--brand-tiger)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+}
+
+.text-glow {
+  text-shadow:
+    0 0 10px hsl(var(--accent-primary) / 0.4),
+    0 0 40px hsl(var(--accent-primary) / 0.15);
+}
+
+.glow-orange {
+  box-shadow:
+    0 0 15px hsl(var(--brand-tiger) / 0.4),
+    0 0 45px hsl(var(--brand-tiger) / 0.15);
+}
+
+/* ========================================
+   GLITCH EFFECT
+   ======================================== */
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: hsl(var(--brand-tiger));
+  animation: var(--animate-glitch-1);
+  left: 2px;
+  text-shadow: -2px 0 hsl(var(--accent-primary));
+}
+
+.glitch::after {
+  color: hsl(var(--accent-primary));
+  animation: var(--animate-glitch-2);
+  left: -2px;
+  text-shadow: 2px 0 hsl(var(--brand-tiger));
+}
+
+@keyframes glitch-clip-1 {
+  0%   { clip-path: inset(40% 0 61% 0); }
+  20%  { clip-path: inset(92% 0 1% 0); }
+  40%  { clip-path: inset(43% 0 1% 0); }
+  60%  { clip-path: inset(25% 0 58% 0); }
+  80%  { clip-path: inset(54% 0 7% 0); }
+  100% { clip-path: inset(58% 0 43% 0); }
+}
+
+@keyframes glitch-clip-2 {
+  0%   { clip-path: inset(65% 0 13% 0); }
+  20%  { clip-path: inset(79% 0 2% 0); }
+  40%  { clip-path: inset(48% 0 40% 0); }
+  60%  { clip-path: inset(10% 0 75% 0); }
+  80%  { clip-path: inset(30% 0 50% 0); }
+  100% { clip-path: inset(94% 0 5% 0); }
+}
+
+/* ========================================
+   FLOATING CODE SNIPPETS
+   ======================================== */
+.float-code {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: hsl(var(--muted-foreground));
+  opacity: 0.25;
+  pointer-events: none;
+  white-space: nowrap;
+  transform: scale(var(--fc-scale, 1));
+}
+
+.float-code--alt {
+  opacity: 0.12;
+  font-style: italic;
+}
+
+.float-code--dir-1 { animation: fc-drift-1 var(--fc-duration, 20s) linear infinite; }
+.float-code--dir-2 { animation: fc-drift-2 var(--fc-duration, 24s) linear infinite; }
+.float-code--dir-3 { animation: fc-drift-3 var(--fc-duration, 18s) linear infinite; }
+.float-code--dir-4 { animation: fc-drift-4 var(--fc-duration, 22s) linear infinite; }
+
+@keyframes fc-drift-1 {
+  0%   { transform: scale(var(--fc-scale, 1)) translate(0, 0); opacity: 0; }
+  10%  { opacity: 0.25; }
+  90%  { opacity: 0.25; }
+  100% { transform: scale(var(--fc-scale, 1)) translate(30px, -60px); opacity: 0; }
+}
+
+@keyframes fc-drift-2 {
+  0%   { transform: scale(var(--fc-scale, 1)) translate(0, 0); opacity: 0; }
+  10%  { opacity: 0.25; }
+  90%  { opacity: 0.25; }
+  100% { transform: scale(var(--fc-scale, 1)) translate(-25px, -45px); opacity: 0; }
+}
+
+@keyframes fc-drift-3 {
+  0%   { transform: scale(var(--fc-scale, 1)) translate(0, 0); opacity: 0; }
+  10%  { opacity: 0.25; }
+  90%  { opacity: 0.25; }
+  100% { transform: scale(var(--fc-scale, 1)) translate(-35px, 50px); opacity: 0; }
+}
+
+@keyframes fc-drift-4 {
+  0%   { transform: scale(var(--fc-scale, 1)) translate(0, 0); opacity: 0; }
+  10%  { opacity: 0.25; }
+  90%  { opacity: 0.25; }
+  100% { transform: scale(var(--fc-scale, 1)) translate(20px, 55px); opacity: 0; }
+}
+
+/* ========================================
+   MARQUEE
+   ======================================== */
+.marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 40s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ========================================
+   BACKGROUND EFFECTS
+   ======================================== */
+.ht-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-color: hsl(var(--background));
+}
+
+.ht-bg-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 20% 50%, hsl(var(--brand-tiger) / 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, hsl(var(--accent-primary) / 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, hsl(var(--brand-twilight) / 0.06) 0%, transparent 50%);
+  opacity: 0.7;
+  filter: blur(80px);
+  animation: aurora-shift 15s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes aurora-shift {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-20px, 10px) scale(1.05); }
+  100% { transform: translate(15px, -10px) scale(0.97); }
+}
+
+.ht-bg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(to bottom, transparent 0%, hsl(var(--background) / 0.6) 100%);
+  pointer-events: none;
+}
+
+.ht-scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    hsl(var(--foreground) / 0.02) 2px,
+    hsl(var(--foreground) / 0.02) 4px
+  );
+  background-size: 100% 4px;
+  opacity: 0.4;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.btn-primary-glow {
+  background: linear-gradient(135deg, hsl(var(--brand-tiger)), hsl(var(--accent-primary)));
+  color: hsl(var(--primary-foreground));
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    0 0 20px hsl(var(--brand-tiger) / 0.3),
+    0 0 60px hsl(var(--brand-tiger) / 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-primary-glow:hover {
+  box-shadow:
+    0 0 30px hsl(var(--brand-tiger) / 0.5),
+    0 0 80px hsl(var(--brand-tiger) / 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-ghost-orange {
+  background: transparent;
+  color: hsl(var(--brand-tiger));
+  border: 1px solid hsl(var(--brand-tiger) / 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-ghost-orange:hover {
+  background: hsl(var(--brand-tiger) / 0.1);
+  border-color: hsl(var(--brand-tiger));
+  box-shadow: 0 0 20px hsl(var(--brand-tiger) / 0.2);
+}
+
+/* ========================================
+   BENTO CARDS
+   ======================================== */
+.bento-item {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.bento-item:hover {
+  border-color: hsl(var(--brand-tiger) / 0.3);
+  box-shadow: 0 0 30px hsl(var(--brand-tiger) / 0.05);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   STATUS PILL
+   ======================================== */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: hsl(var(--success) / 0.15);
+  border: 1px solid hsl(var(--success) / 0.3);
+  border-radius: 9999px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: hsl(var(--success));
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: hsl(var(--success));
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ========================================
+   GRADIENT ACCENT
+   ======================================== */
+.bg-gradient-accent {
+  background: linear-gradient(135deg, hsl(var(--brand-tiger)), hsl(var(--brand-saffron)));
+}
+
+/* ========================================
+   SCROLL BEHAVIOR
+   ======================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
