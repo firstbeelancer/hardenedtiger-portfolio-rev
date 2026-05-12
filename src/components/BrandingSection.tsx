@@ -1,13 +1,13 @@
+import { Fingerprint, Palette, Shirt, BookOpen, Package } from 'lucide-react';
 import { brandingItems } from '../data/branding';
-import * as Icons from 'lucide-react';
 
-// Dynamic icon resolver
-function getIcon(name: string) {
-  const Icon = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[
-    name.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')
-  ] || Icons.Sparkles;
-  return Icon;
-}
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  fingerprint: Fingerprint,
+  palette: Palette,
+  shirt: Shirt,
+  'book-open': BookOpen,
+  package: Package,
+};
 
 export default function BrandingSection() {
   return (
@@ -29,7 +29,7 @@ export default function BrandingSection() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {brandingItems.map((item) => {
-            const Icon = getIcon(item.icon);
+            const Icon = iconMap[item.icon] || Fingerprint;
             return (
               <div key={item.title} className="bento-item p-5 h-full">
                 <div className="w-10 h-10 rounded-lg bg-gradient-accent flex items-center justify-center mb-4 glow-orange">

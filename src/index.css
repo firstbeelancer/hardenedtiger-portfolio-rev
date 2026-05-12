@@ -1,6 +1,17 @@
 @import "tailwindcss";
 
 /* ========================================
+   FONT: Camera Plain Variable
+   ======================================== */
+@font-face {
+  font-family: "Camera Plain Variable";
+  src: url("https://cdn.gpteng.co/fonts/camera-plain/camera-plain-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ========================================
    DESIGN TOKENS — Hardened Tiger
    ======================================== */
 @theme {
@@ -34,7 +45,7 @@
    ======================================== */
 :root {
   /* Core palette — dark mode (default) */
-  --background: 30 20% 5%;
+  --background: 30 20% 7%;
   --foreground: 45 40% 95%;
   --card: 30 15% 8%;
   --card-foreground: 45 40% 95%;

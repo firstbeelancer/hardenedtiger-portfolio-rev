@@ -1,11 +1,17 @@
+import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { apps, sites } from '../data/projects';
 
 function ProjectCard({ project }: { project: typeof apps[number] }) {
   return (
-    <a className="bento-item group block p-5 md:p-6 h-full" href={`/project/${project.slug}`}>
-      <div className="relative overflow-hidden rounded-lg mb-5 aspect-[4/3] bg-[hsl(var(--secondary)/0.4)]">
-        <div className="w-full h-full bg-gradient-to-br from-[hsl(var(--brand-tiger)/0.2)] to-[hsl(var(--accent-primary)/0.1)] transition-transform duration-700 group-hover:scale-105" />
+    <Link className="bento-item group block p-5 md:p-6 h-full" to={`/project/${project.slug}`}>
+      <div className="relative overflow-hidden rounded-lg mb-5 aspect-[4/3]">
+        <img
+          src={project.image}
+          alt={project.title}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--background)/0.8)] via-transparent to-transparent" />
         <span className="absolute top-3 left-3 status-pill">
           <span className="status-dot" /> {project.status}
@@ -32,7 +38,7 @@ function ProjectCard({ project }: { project: typeof apps[number] }) {
         Подробный кейс
         <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </div>
-    </a>
+    </Link>
   );
 }
 

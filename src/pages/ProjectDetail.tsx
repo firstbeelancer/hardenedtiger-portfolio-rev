@@ -45,8 +45,12 @@ export default function ProjectDetail() {
         </div>
 
         <div className="bento-item p-6 md:p-8 mb-8">
-          <div className="aspect-[16/9] rounded-lg bg-gradient-to-br from-[hsl(var(--brand-tiger)/0.2)] to-[hsl(var(--accent-primary)/0.1)] mb-6 flex items-center justify-center">
-            <span className="text-[hsl(var(--muted-foreground))] font-mono text-sm">Preview</span>
+          <div className="aspect-[16/9] rounded-lg overflow-hidden mb-6">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
           </div>
 
           <p className="text-lg text-[hsl(var(--foreground)/0.9)] leading-relaxed mb-6">
@@ -65,20 +69,23 @@ export default function ProjectDetail() {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <a href="#contacts" className="btn-primary-glow px-6 py-3 rounded-full inline-flex items-center gap-2 text-sm">
+            <a href="/#contacts" className="btn-primary-glow px-6 py-3 rounded-full inline-flex items-center gap-2 text-sm">
               Обсудить проект <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
         </div>
 
-        {/* Detailed project content placeholder */}
+        {/* Detailed project sections */}
         <div className="space-y-6">
           <div className="bento-item p-6">
             <h3 className="font-mono text-xs text-[hsl(var(--primary)/0.7)] uppercase tracking-[0.3em] mb-3">
               // Задача
             </h3>
             <p className="text-[hsl(var(--foreground)/0.85)] leading-relaxed">
-              Подробнее о задаче и контексте проекта будет добавлено позже.
+              {project.type === 'app'
+                ? `Разработка ${project.category.toLowerCase()}, объединяющего ключевые рабочие процессы в едином интерфейсе. Цель — сократить ручные операции, повысить скорость принятия решений и обеспечить удобство ежедневного использования.`
+                : `Создание ${project.category.toLowerCase()}, который решает задачи привлечения клиентов, формирования доверия и конвертации посетителей в заявки. Цель — современный, быстрый и конверсионный веб-ресурс.`
+              }
             </p>
           </div>
 
@@ -87,7 +94,10 @@ export default function ProjectDetail() {
               // Решение
             </h3>
             <p className="text-[hsl(var(--foreground)/0.85)] leading-relaxed">
-              Описание решения и подхода к разработке.
+              {project.type === 'app'
+                ? `AI-Native подход к разработке: от архитектуры и прототипирования до финального кода и тестирования. Кроссплатформенная реализация с акцентом на UX, производительность и масштабируемость. Вайбкодинг как метод — человек + AI создают продукт целиком, без потери контекста между этапами.`
+                : `Полный цикл создания сайта: ресерч, структура, дизайн, копирайтинг, вёрстка и запуск. AI-Native подход позволяет выполнить проект от идеи до деплоя одним специалистом, сохраняя единый визуальный и смысловой стиль на всех этапах.`
+              }
             </p>
           </div>
 
@@ -101,6 +111,12 @@ export default function ProjectDetail() {
                   {tag}
                 </span>
               ))}
+              <span className="font-mono text-xs px-3 py-1 rounded-full bg-[hsl(var(--secondary))] text-[hsl(var(--muted-foreground))]">
+                AI-Native
+              </span>
+              <span className="font-mono text-xs px-3 py-1 rounded-full bg-[hsl(var(--secondary))] text-[hsl(var(--muted-foreground))]">
+                End-to-End
+              </span>
             </div>
           </div>
         </div>

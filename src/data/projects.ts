@@ -19,7 +19,7 @@ export const projects: Project[] = [
     status: 'MVP',
     category: 'Приложение для продаж',
     tags: ['Sales', 'B2B', 'Документы'],
-    image: '/assets/app-sales.jpg',
+    image: '/assets/app-sales.png',
     type: 'app',
   },
   {
@@ -30,7 +30,7 @@ export const projects: Project[] = [
     status: 'В разработке',
     category: 'AI-инструмент',
     tags: ['AI', 'Промтинг', 'Кроссплатформа'],
-    image: '/assets/app-promt.jpg',
+    image: '/assets/app-promt.png',
     type: 'app',
   },
   {
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     status: 'В разработке',
     category: 'Продуктивность',
     tags: ['Productivity', 'Voice', 'Mobile'],
-    image: '/assets/app-task.jpg',
+    image: '/assets/app-task.png',
     type: 'app',
   },
   {
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     status: 'Прототип',
     category: 'Аналитика и финансы',
     tags: ['Analytics', 'ROI', 'Финансы'],
-    image: '/assets/app-roi.jpg',
+    image: '/assets/app-roi.png',
     type: 'app',
   },
   {
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     status: 'Реализовано',
     category: 'Безопасность',
     tags: ['Security', 'Vault', 'E2E'],
-    image: '/assets/app-stash.jpg',
+    image: '/assets/app-stash.png',
     type: 'app',
   },
   {
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     status: 'Концепт',
     category: 'Инструмент для AI-разработки',
     tags: ['AI Dev', 'Knowledge Base', 'Vibecoding'],
-    image: '/assets/app-wiki.jpg',
+    image: '/assets/app-wiki.png',
     type: 'app',
   },
   {
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     status: 'Реализовано',
     category: 'Дизайн-система',
     tags: ['Design System', 'Brand', 'UI Kit'],
-    image: '/assets/app-uikit.jpg',
+    image: '/assets/app-uikit.png',
     type: 'app',
   },
   {
@@ -96,7 +96,7 @@ export const projects: Project[] = [
     status: 'Реализовано',
     category: 'Сайт компании',
     tags: ['Лендинг', 'Сервис', 'B2C'],
-    image: '/assets/site-sovuq.jpg',
+    image: '/assets/site-sovuq.png',
     type: 'site',
   },
   {
@@ -107,7 +107,7 @@ export const projects: Project[] = [
     status: 'В разработке',
     category: 'Сайт салона',
     tags: ['Beauty', 'Лендинг', 'Запись'],
-    image: '/assets/site-coco.jpg',
+    image: '/assets/site-coco.png',
     type: 'site',
   },
   {
@@ -118,7 +118,7 @@ export const projects: Project[] = [
     status: 'Реализовано',
     category: 'Сайт строительной компании',
     tags: ['Стройка', 'B2C', 'Кейсы'],
-    image: '/assets/site-alex3stroy.jpg',
+    image: '/assets/site-alex3stroy.png',
     type: 'site',
   },
   {
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     status: 'Реализовано',
     category: 'Корпоративный сайт',
     tags: ['IT', 'Интеграция', 'B2B'],
-    image: '/assets/site-tehgid.jpg',
+    image: '/assets/site-tehgid.png',
     type: 'site',
   },
 ];

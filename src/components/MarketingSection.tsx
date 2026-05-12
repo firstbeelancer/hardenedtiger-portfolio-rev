@@ -1,11 +1,14 @@
+import { Target, Share2, PenTool, Presentation, Mail, ImageIcon } from 'lucide-react';
 import { marketingItems } from '../data/marketing';
-import * as Icons from 'lucide-react';
 
-function getIcon(name: string) {
-  const pascalName = name.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('');
-  const Icon = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[pascalName] || Icons.Sparkles;
-  return Icon;
-}
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  target: Target,
+  'share-2': Share2,
+  'pen-tool': PenTool,
+  presentation: Presentation,
+  mail: Mail,
+  image: ImageIcon,
+};
 
 export default function MarketingSection() {
   return (
@@ -27,7 +30,7 @@ export default function MarketingSection() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {marketingItems.map((item) => {
-            const Icon = getIcon(item.icon);
+            const Icon = iconMap[item.icon] || Target;
             return (
               <div key={item.title} className="bento-item p-5 h-full flex gap-4">
                 <div className="w-10 h-10 rounded-lg bg-gradient-accent flex items-center justify-center shrink-0 glow-orange">
